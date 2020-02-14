@@ -1,0 +1,67 @@
+﻿
+@model Cart;
+@{
+
+    ViewData["Title"] = "Results";
+    var example = ViewData["Example"] ;
+}
+
+<div style="margin-top:15px;">
+    <a class="btn btn-primary" href="Results?example=1">Run Input 1</a>
+    <a class="btn btn-primary" href="Results?example=2">Run Input 2</a>
+    <a class="btn btn-primary" href="Results?example=3">Run Input 3</a>
+
+
+</div>
+
+<div class="container">
+    <div class="col-sm-6">
+        <h2>INPUT @example</h2>
+
+        @foreach (var item in Model.Items)
+        {
+            <div>
+                <label>@item.Qty</label>
+
+                @if (item.IsImport)
+                {
+                    <label>Imported</label>
+                }
+
+                <label>@item.Description</label>
+                <label>at @item.Price</label>
+            </div>
+        }
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row">
+            <h2>OUTPUT @example</h2>
+        </div>
+
+        @foreach (var item in Model.Items)
+        {
+            <div class="row">
+                <label>@item.PrintTotal()</label>
+            </div>
+        }
+
+        <div class="row">
+            <label>Sales Taxes: @Model.PrintTax()</label>
+        </div>
+
+        <div class="row">
+            <label>Total: @Model.PrintTotal()</label>
+        </div>
+    </div>
+
+</div>
+<div class="row" style="margin-top: 16px;">
+    <form asp-controller="Home" style="margin-top:15px;">
+        <input  class="col-sm-6" type="text" name="data"   placeholder="Example: 1 Book at 12.49 : 1 Music CD at 14.99">
+        <input style="margin-left:8px;" type="submit" class="btn btn-danger" />
+    </form>
+    <label>Enter your own data separated data by ':' and then click 'Submit'</label>
+</div>
+
+

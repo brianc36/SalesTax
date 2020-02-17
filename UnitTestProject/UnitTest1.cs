@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SalesTax.Parser;
+using static SalesTax.Parser.Parser;
 
 namespace UnitTestProject
 {

@@ -7,6 +7,11 @@ namespace SalesTax.Models
 {
     public class Cart
     {
+        public static Cart CreateInstance()
+        {
+            return new Cart();
+        }
+
         public List<Item> Items { get; set; }  = new List<Item>();
         
         public void AddItem(Item item)

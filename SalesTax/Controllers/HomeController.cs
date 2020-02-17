@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SalesTax.Items;
+using SalesTax.Test;
 using SalesTax.Models;
 
 namespace SalesTax.Controllers
@@ -56,7 +57,7 @@ namespace SalesTax.Controllers
             var test = new Test.Test(_salesTax, _importTax);
 
             //Create cart and run test.
-            var cart = test.RunTest(4, data);
+            var cart = test.RunTest(data);
 
             return View(cart);
         }

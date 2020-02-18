@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Data.OData.Query;
 using SalesTax.Items;
 using SalesTax.Models;
 
@@ -11,7 +9,7 @@ namespace SalesTax.Test
         public ISalesTax SalesTax { get; }
         public IImportTax ImportTax { get; }
 
-        private readonly List<List<Parser.Parser>> _Examples = new List<List<Parser.Parser>>
+        private readonly List<List<Parser.Parser>> _examples = new List<List<Parser.Parser>>
         {
             new List<Parser.Parser>
             {
@@ -46,7 +44,7 @@ namespace SalesTax.Test
         public List<Parser.Parser> CustomData(string data)
         {
             List<Parser.Parser> parsed = new List<Parser.Parser>();
-
+            
             string[] rows = data.Split(':');
 
             foreach (var row in rows)
@@ -67,7 +65,7 @@ namespace SalesTax.Test
 
         public Cart RunTest(int testNumber)
         {
-            return ProcessItems(_Examples[testNumber - 1]);
+            return ProcessItems(_examples[testNumber - 1]);
         }
 
         private Cart ProcessItems(List<Parser.Parser> parserData)

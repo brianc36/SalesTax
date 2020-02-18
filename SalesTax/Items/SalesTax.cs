@@ -24,8 +24,7 @@ namespace SalesTax.Items
         {
             var tax = price *  SalesTaxPct;
 
-            return CalculateTaxNickels(tax); ;
-
+            return CalculateTaxNickels(tax);
         }
 
         private static decimal CalculateTaxNickels(decimal tax)

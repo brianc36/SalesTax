@@ -24,6 +24,9 @@ namespace SalesTax
             IImportTax importTax = new ImportTax(Configuration["ImportTaxPct"]);
             services.AddSingleton(importTax);
 
+            var test = new Test.Test(salesTax, importTax);
+            services.AddSingleton(test);
+
             services.AddMvc();
         }
 

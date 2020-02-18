@@ -61,7 +61,8 @@ namespace SalesTax.Parser
             // exception of books, food, and medical product
             if (itemTypes.ContainsKey(Description.ToLower()))
             {
-                IsTaxExempt = true; 
+                IsTaxExempt = true;
+                Category = itemTypes[Description.ToLower()];
             }
 
             IsValid = true;

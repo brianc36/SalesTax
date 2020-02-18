@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SalesTax.Items;
-using SalesTax.Test;
 using SalesTax.Models;
 
 namespace SalesTax.Controllers
@@ -10,11 +9,13 @@ namespace SalesTax.Controllers
     {
         private readonly ISalesTax _salesTax;
         private readonly IImportTax _importTax;
+        private readonly Test.Test _test;
   
-        public HomeController(ISalesTax salesTax, IImportTax importTax)
+        public HomeController(ISalesTax salesTax, IImportTax importTax, Test.Test test)
         {
             _salesTax = salesTax;
             _importTax = importTax;
+            _test = test;
         }
 
         public IActionResult Index()
@@ -32,11 +33,8 @@ namespace SalesTax.Controllers
         {
             ViewData["Example"] = example.ToString();
 
-            //Setup test cases.
-            var test = new Test.Test(_salesTax, _importTax );
-
             //Create cart and run test.
-            var cart = test.RunTest(example);
+            var cart = _test.RunTest(example);
 
             return View(cart);
         }
@@ -52,12 +50,8 @@ namespace SalesTax.Controllers
         {
             ViewData["Example"] = "Other";
 
-
-            //Setup Test
-            var test = new Test.Test(_salesTax, _importTax);
-
             //Create cart and run test.
-            var cart = test.RunTest(data);
+            var cart = _test.RunTest(data);
 
             return View(cart);
         }
